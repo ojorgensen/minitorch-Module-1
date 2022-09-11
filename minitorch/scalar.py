@@ -218,9 +218,8 @@ class Scalar:
         # print(derivs_vars)
         deriv_vars_out = []
         for (var, deriv) in derivs_vars:
-            # Currently this is making stuff output 0 even when I don't think we want it to, so have just set this to False
-            # It should check if var.is_constant
-            if False:
+            # It should check if var.is_constant()
+            if var.is_constant():
                 deriv_vars_out.append((var, 0))
             else:
                 deriv_vars_out.append((var, deriv))

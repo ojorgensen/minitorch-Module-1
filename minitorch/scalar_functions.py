@@ -129,7 +129,7 @@ class Inv(ScalarFunction):
     def backward(ctx: Context, d_output: float) -> float:
         # TODO: Implement for Task 1.4.
         (a,) = ctx.saved_values
-        return -1. / (a**2)
+        return (-1. / (a**2)) * d_output
 
 
 class Neg(ScalarFunction):
@@ -176,7 +176,7 @@ class ReLU(ScalarFunction):
         # TODO: Implement for Task 1.4.
         (a,) = ctx.saved_values
         if a >= 0:
-            return 1.0
+            return 1.0 * d_output
         else:
             return 0.0
 

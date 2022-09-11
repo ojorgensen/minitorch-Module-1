@@ -3,7 +3,7 @@ from typing import Tuple
 import pytest
 
 import minitorch
-from minitorch import Context, ScalarFunction, ScalarHistory
+from minitorch import Context, ScalarFunction, ScalarHistory, Scalar
 
 # ## Task 1.3 - Tests for the autodifferentiation machinery.
 
@@ -59,4 +59,26 @@ def test_backprop1() -> None:
     var2.backward(d_output=5)
     print(var.derivative, var_test.derivative)
 
-test_backprop1()
+# test_backprop1()
+
+
+# Going to test each part of the functions we get wrong, to see where they go wrong.
+
+def div2(a, b):
+        "Divide two arguments"
+        return a / (b + 5.5)
+
+
+x = Scalar(3)
+y = Scalar(3)
+
+c = div2(x, y)
+print(c)
+
+c.backward()
+print("kabom")
+print( x.derivative, y.derivative)
+
+
+
+
